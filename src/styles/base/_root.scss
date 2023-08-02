@@ -1,0 +1,21 @@
+@use "../abstracts/" as *;
+
+:root {
+  /* Colors */
+
+  @include getItemsObject($dark, "color");
+  --shadow: 0px 6px 5px rgb(0, 0, 0, 0.016), 0px 22px 18px rgb(0, 0, 0, 0.024), 0px 100px 80px rgb(0, 0, 0, 0.04);
+  --radius: 5px;
+
+  &[data-theme="light"] {
+    @include getItemsObject($light, "color");
+  }
+
+  /* Typography */
+  --font-family-primary: #{$font-family};
+  @include getItemsObject($font, "font");
+
+  @media (prefers-color-scheme: light) {
+    @include getItemsObject($light, "color");
+  }
+}

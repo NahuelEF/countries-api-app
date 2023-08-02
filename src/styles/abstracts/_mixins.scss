@@ -1,0 +1,15 @@
+@mixin getItemsObject($object, $property) {
+  @each $prefix, $component in $object {
+    @each $number, $value in $component {
+      --#{$property}-#{$prefix}-#{$number}: #{$value};
+    }
+  }
+}
+
+@mixin displayFlex($direction, $wrap, $align, $justify, $gap: null) {
+  display: flex;
+  flex-flow: $direction $wrap;
+  align-items: $align;
+  justify-content: $justify;
+  gap: $gap;
+}

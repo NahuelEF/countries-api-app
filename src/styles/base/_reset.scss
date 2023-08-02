@@ -83,8 +83,8 @@ q:after {
 }
 
 ::selection {
-  background-color: var(--primary-txt-color);
-  color: var(--primary-bg-color);
+  background-color: var(--color-primary-000);
+  color: var(--color-primary-100);
 }
 
 form,
@@ -119,11 +119,12 @@ svg {
 body {
   min-height: 100vh;
   font-size: 100%;
-  font-family: var(--primary-font-family);
-  color: var(--primary-txt-color);
-  background-color: var(--primary-bg-color);
+  font-family: var(--font-family-primary);
+  color: var(--color-primary-000);
+  background-color: var(--color-primary-100);
   hyphens: auto;
   font-smooth: always;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background 0.2s ease-in-out;
 }

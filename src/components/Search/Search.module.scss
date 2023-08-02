@@ -1,0 +1,33 @@
+@use "@/styles/abstracts/mixins" as *;
+
+.search {
+  width: min(30rem, 100%);
+  border-radius: var(--radius);
+  padding: 1.125rem 2rem;
+  box-shadow: var(--shadow);
+  background-color: var(--color-secondary-000);
+  color: var(--color-primary-000);
+  @include displayFlex(row, nowrap, center, center);
+
+  &Label {
+    width: 100%;
+    @include displayFlex(row, nowrap, center, space-between);
+  }
+
+  &Icon {
+  }
+
+  &Input {
+    padding-left: 1.5rem;
+    font: {
+      size: var(--font-size-md);
+      weight: var(--font-weight-300);
+    }
+    flex: 1;
+    outline: none;
+
+    &::placeholder {
+      color: inherit;
+    }
+  }
+}

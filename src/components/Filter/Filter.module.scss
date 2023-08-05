@@ -1,0 +1,44 @@
+@use "@/styles/abstracts/mixins" as *;
+@use "@/styles/abstracts/colors" as *;
+
+.filter {
+  width: min(13.156rem, 100%);
+  $padding: 1.125rem;
+  position: relative;
+  text-align: left;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-300);
+  @include displayFlex(column, nowrap, center, center);
+  user-select: none;
+  cursor: pointer;
+
+  &Label,
+  &Options {
+    width: 100%;
+    border-radius: var(--radius);
+    background-color: var(--color-secondary-000);
+  }
+
+  &Label {
+    padding: $padding;
+    box-shadow: var(--shadow);
+    @include displayFlex(row, nowrap, center, space-between, 3rem);
+  }
+
+  &Options {
+    position: absolute;
+    top: 4rem;
+    left: 0;
+    box-shadow: var(--shadow);
+    line-height: 0;
+    overflow: hidden;
+  }
+
+  &Option {
+    padding: $padding;
+
+    &:hover {
+      background-color: rgba(blue, 0.2);
+    }
+  }
+}

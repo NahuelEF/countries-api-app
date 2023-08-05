@@ -1,6 +1,7 @@
 $clr-white: hsl(0, 0%, 100%);
 
 $clr-gray-100: hsl(0, 0%, 98%);
+$clr-gray-200: hsl(0, 0%, 52%);
 
 $clr-blue-100: hsl(207, 26%, 17%);
 $clr-blue-200: hsl(209, 23%, 22%);
@@ -13,6 +14,7 @@ $light: (
   ),
   "secondary": (
     "000": $clr-white,
+    "100": $clr-gray-200,
   ),
 );
 

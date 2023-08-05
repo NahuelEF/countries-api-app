@@ -2,7 +2,7 @@ import style from "./Search.module.scss";
 
 export const Search = () => {
   return (
-    <form className={style.search}>
+    <form className={style.search} onSubmit={(e) => e.preventDefault()}>
       <label className={style.searchLabel}>
         <span className={style.searchIcon}>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">

@@ -1,12 +1,14 @@
 @use "@/styles/abstracts/mixins" as *;
 
 .search {
+  $secondary-color: var(--color-secondary-100, var(--color-primary-000));
+
   width: min(30rem, 100%);
   border-radius: var(--radius);
   padding: 1.125rem 2rem;
-  box-shadow: var(--shadow);
   background-color: var(--color-secondary-000);
-  color: var(--color-primary-000);
+  color: $secondary-color;
+  box-shadow: var(--shadow);
   @include displayFlex(row, nowrap, center, center);
 
   &Label {
@@ -19,15 +21,17 @@
 
   &Input {
     padding-left: 1.5rem;
+    color: var(--color-primary-000);
     font: {
       size: var(--font-size-md);
       weight: var(--font-weight-300);
     }
     flex: 1;
     outline: none;
+    caret-color: var(--color-primary-000);
 
     &::placeholder {
-      color: inherit;
+      color: $secondary-color;
     }
   }
 }

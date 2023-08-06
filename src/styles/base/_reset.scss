@@ -95,6 +95,7 @@ button,
 label {
   font-family: inherit;
   font-size: inherit;
+  -webkit-hyphens: auto;
   hyphens: auto;
   background-color: transparent;
   color: inherit;
@@ -122,9 +123,10 @@ body {
   font-family: var(--font-family-primary);
   color: var(--color-primary-000);
   background-color: var(--color-primary-100);
+  -webkit-hyphens: auto;
   hyphens: auto;
-  font-smooth: always;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-smooth: always;
   transition: background 0.2s ease-in-out;
 }

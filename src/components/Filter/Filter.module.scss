@@ -2,13 +2,15 @@
 @use "@/styles/abstracts/colors" as *;
 
 .filter {
-  width: min(13.156rem, 100%);
   $padding: 1.125rem;
+
+  width: min(12.5rem, 100%);
   position: relative;
   text-align: left;
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-300);
   @include displayFlex(column, nowrap, center, center);
+  -webkit-user-select: none;
   user-select: none;
   cursor: pointer;
 
@@ -22,7 +24,7 @@
   &Label {
     padding: $padding;
     box-shadow: var(--shadow);
-    @include displayFlex(row, nowrap, center, space-between, 3rem);
+    @include displayFlex(row, nowrap, center, space-between, 2.75rem);
   }
 
   &Options {
@@ -30,12 +32,11 @@
     top: 4rem;
     left: 0;
     box-shadow: var(--shadow);
-    line-height: 0;
     overflow: hidden;
   }
 
   &Option {
-    padding: $padding;
+    padding: 0.75rem $padding;
 
     &:hover {
       background-color: rgba(blue, 0.2);

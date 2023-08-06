@@ -16,14 +16,11 @@
     @include displayFlex(row, nowrap, center, space-between);
   }
 
-  &Icon {
-  }
-
   &Input {
     padding-left: 1.5rem;
     color: var(--color-primary-000);
     font: {
-      size: var(--font-size-md);
+      size: var(--font-size-sm);
       weight: var(--font-weight-300);
     }
     flex: 1;

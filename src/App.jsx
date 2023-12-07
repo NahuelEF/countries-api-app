@@ -1,25 +1,19 @@
-import { Header, Search, Filter } from "@/components";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Header } from "./layout";
+import { Details, Home, NotFound } from "./pages";
 import "./App.scss";
-
-const options = [
-  { value: "africa", label: "Africa" },
-  { value: "america", label: "America" },
-  { value: "asia", label: "Asia" },
-  { value: "europe", label: "Europe" },
-  { value: "oceania", label: "Oceania" },
-];
 
 function App() {
   return (
-    <>
-      <Header />
-      <main className="main">
-        <nav className="nav">
-          <Search />
-          <Filter options={options} label="Filter by Region" />
-        </nav>
-      </main>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Header />}>
+          <Route index element={<Home />} />
+          <Route path="country/:name" element={<Details />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

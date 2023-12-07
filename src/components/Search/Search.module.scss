@@ -5,7 +5,6 @@
 
   width: min(30rem, 100%);
   border-radius: var(--radius);
-  padding: 1.125rem 2rem;
   background-color: var(--color-secondary-000);
   color: $secondary-color;
   box-shadow: var(--shadow);
@@ -13,6 +12,7 @@
 
   &Label {
     width: 100%;
+    padding: 1.125rem 2rem;
     @include displayFlex(row, nowrap, center, space-between);
   }
 

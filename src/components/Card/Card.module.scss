@@ -1,0 +1,37 @@
+@use "@/styles/abstracts/mixins" as *;
+
+.card {
+  border-radius: var(--radius);
+  background-color: var(--color-secondary-000);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+
+  &Image {
+    aspect-ratio: 2/1;
+    object-fit: cover;
+  }
+
+  &Container {
+    padding: 1.6875rem 1.5rem;
+  }
+
+  &Title {
+    margin-bottom: 1.1875rem;
+    font: {
+      size: var(--font-size-lg);
+      weight: var(--font-weight-600);
+    }
+  }
+
+  &List {
+    font: {
+      size: var(--font-size-sm);
+      weight: var(--font-weight-300);
+    }
+    @include displayFlex(column, nowrap, start, center, 0.5rem);
+  }
+
+  &Strong {
+    font-weight: var(--font-weight-600);
+  }
+}

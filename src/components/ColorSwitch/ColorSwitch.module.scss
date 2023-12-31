@@ -1,0 +1,11 @@
+@use "@/styles/abstracts/mixins" as *;
+
+.button {
+  text-transform: capitalize;
+  font: {
+    size: var(--font-size-md);
+    weight: var(--font-weight-600);
+  }
+  @include displayFlex(row, nowrap, center, space-between, 1rem);
+  cursor: pointer;
+}

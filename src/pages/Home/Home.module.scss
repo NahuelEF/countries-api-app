@@ -1,56 +1,27 @@
 @use "@/styles/abstracts/mixins" as *;
 
-.main {
-  min-height: 100vh;
-  padding: 2rem 2rem 0 2rem; // delete this line
-  @include displayFlex(column, nowrap, start, start);
-}
-
 .section {
   width: 100%;
-  padding-top: 2rem;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  justify-items: center;
-  gap: 2rem 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16.5625rem), 1fr));
+  gap: 4.5rem;
 }
 
-.card {
-  max-width: 16.5625rem;
-  border-radius: var(--radius);
-  background-color: var(--color-secondary-000);
+.button {
+  $size: 1.5;
+  $position: 2rem;
+
+  position: fixed;
+  bottom: $position;
+  right: $position + 1;
+  border-radius: 100%;
+  padding: #{$size}rem;
+  background-color: var(--color-primary-000);
+  color: var(--color-primary-100);
   box-shadow: var(--shadow);
-  overflow: hidden;
+  cursor: pointer;
 
-  &Image {
-    aspect-ratio: 2/1;
-    object-fit: cover;
-  }
-
-  &Container {
-    padding: 1.6875rem 1.5rem;
-  }
-
-  &Title {
-    margin-bottom: 1.1875rem;
-    font: {
-      size: var(--font-size-lg);
-      weight: var(--font-weight-600);
-    }
-  }
-
-  &List {
-    font: {
-      size: var(--font-size-sm);
-      weight: var(--font-weight-300);
-    }
-    @include displayFlex(column, nowrap, start, center, 0.5rem);
-  }
-
-  &Item {
-  }
-
-  &Strong {
-    font-weight: var(--font-weight-600);
+  span > svg {
+    transform: scale($size) rotate(180deg);
   }
 }

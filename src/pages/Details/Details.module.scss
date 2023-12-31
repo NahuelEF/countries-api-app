@@ -1,0 +1,69 @@
+@use "@/styles/abstracts/mixins" as *;
+
+.button,
+.buttonCountry {
+  border-radius: var(--radius);
+  background-color: var(--color-secondary-000);
+  box-shadow: var(--shadow);
+  text-align: center;
+  cursor: pointer;
+}
+
+.button {
+  padding: 0.875rem 2.1875rem;
+  @include displayFlex(row, nowrap, center, center, 7px);
+  align-self: self-start;
+
+  & span > svg {
+    fill: none;
+  }
+}
+
+.buttonCountry {
+  min-width: 6.0625rem;
+  padding-block: 5px;
+  text-transform: lowercase;
+}
+
+.section {
+  width: 100%;
+  @include displayFlex(row, nowrap, center, space-between, 4.375rem 9.375rem);
+
+  &Flag {
+    width: 50%;
+    aspect-ratio: 3/2;
+    object-fit: fill;
+  }
+}
+
+.details {
+  width: 50%;
+  @include displayFlex(column, nowrap, initial, initial, 2.0625rem);
+
+  &Title {
+    font: {
+      size: var(--font-size-xl);
+      weight: var(--font-weight-800);
+    }
+  }
+
+  &List {
+    @include displayFlex(row, wrap, start, space-between, 1rem);
+  }
+
+  &Item {
+    margin-bottom: 0.8125rem;
+  }
+
+  &Description {
+    text-transform: capitalize;
+    font: {
+      size: var(--font-size-md);
+      weight: var(--font-weight-600);
+    }
+  }
+
+  &Borders {
+    @include displayFlex(row, wrap, center, initial, 0.625rem);
+  }
+}

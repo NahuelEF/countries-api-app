@@ -1,0 +1,21 @@
+.main {
+  min-height: 100dvh;
+  text-align: center;
+  display: grid;
+  place-content: center;
+
+  .title {
+    font: {
+      size: var(--font-size-xxl);
+      weight: var(--font-weight-800);
+    }
+  }
+
+  .error {
+    text-transform: uppercase;
+    font: {
+      size: var(--font-size-md);
+      weight: var(--font-weight-600);
+    }
+  }
+}

@@ -13,14 +13,4 @@
       weight: var(--font-weight-800);
     }
   }
-
-  &Button {
-    text-transform: capitalize;
-    font: {
-      size: var(--font-size-md);
-      weight: var(--font-weight-600);
-    }
-    @include displayFlex(row, nowrap, center, space-between, 1rem);
-    cursor: pointer;
-  }
 }

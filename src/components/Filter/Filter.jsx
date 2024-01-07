@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { ArrowDownIcon } from "@/assets/icons";
 import style from "./Filter.module.scss";
+import { SEARCH_PARAM } from "@/constants";
 
 export const Filter = ({ initialValue, options }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [selectedValue, setSelectedValue] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     const handler = () => setShowMenu(false);
@@ -22,6 +24,18 @@ export const Filter = ({ initialValue, options }) => {
     setShowMenu(!showMenu);
   };
 
+  const handleFilterChange = (option) => {
+    if (option.value.length === 0) {
+      searchParams.delete(SEARCH_PARAM.REGION);
+    } else {
+      searchParams.set(SEARCH_PARAM.REGION, option.value);
+    }
+
+    setSearchParams(searchParams, { replace: true });
+
+    setSelectedValue(option);
+  };
+
   const activeLabel = selectedValue ? selectedValue.label : initialValue;
 
   return (
@@ -35,10 +49,10 @@ export const Filter = ({ initialValue, options }) => {
       {showMenu && (
         <ul className={style.filterOptions}>
           {options.map((option) => (
-            <li key={option.value} onClick={() => setSelectedValue(option)}>
-              <Link to={`?region=${option.value}`} className={style.filterOption}>
+            <li key={option.value}>
+              <button className={style.filterOption} onClick={() => handleFilterChange(option)}>
                 {option.label}
-              </Link>
+              </button>
             </li>
           ))}
         </ul>

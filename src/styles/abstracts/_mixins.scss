@@ -13,3 +13,9 @@
   justify-content: $justify;
   gap: $gap;
 }
+
+@mixin displayGrid($minWidth, $gap: null) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min($minWidth, 100%), 1fr));
+  gap: $gap;
+}

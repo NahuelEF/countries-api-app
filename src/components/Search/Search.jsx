@@ -1,37 +1,41 @@
-import { useState } from "react";
+import { Form, useSearchParams } from "react-router-dom";
 import { SearchIcon } from "@/assets/icons";
+import { SEARCH_PARAM } from "@/constants";
 import style from "./Search.module.scss";
 
 export const Search = () => {
-  const [text, setText] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newText = text.trim();
+  const searchValue = searchParams.get(SEARCH_PARAM.COUNTRY_NAME) || "";
 
-    if (newText !== "") {
-      console.log(newText);
-      setText("");
+  const handleSearchChange = (event) => {
+    const searchText = event.target.value;
+
+    if (searchText.length === 0) {
+      searchParams.delete(SEARCH_PARAM.COUNTRY_NAME);
+    } else {
+      searchParams.set(SEARCH_PARAM.COUNTRY_NAME, searchText);
     }
+
+    setSearchParams(searchParams, { replace: true });
   };
 
-  const handleChange = (e) => setText(e.target.value);
-
   return (
-    <form className={style.search} onSubmit={handleSubmit}>
-      <label className={style.searchLabel} htmlFor="search">
+    <Form className={style.search} onSubmit={(e) => e.preventDefault()}>
+      <label className={style.searchLabel}>
         <span className={style.searchIcon}>
           <SearchIcon />
         </span>
         <input
-          id="search"
           className={style.searchInput}
-          type="text"
+          type="search"
+          name={SEARCH_PARAM.COUNTRY_NAME}
+          defaultValue={searchValue}
           placeholder="Search for a country..."
-          value={text}
-          onChange={handleChange}
+          autoComplete="country-name"
+          onChange={handleSearchChange}
         />
       </label>
-    </form>
+    </Form>
   );
 };

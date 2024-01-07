@@ -36,7 +36,10 @@
   }
 
   &Option {
+    width: 100%;
     padding: 0.75rem $padding;
+    text-align: start;
+    cursor: pointer;
 
     &:hover {
       background-color: rgba(blue, 0.2);

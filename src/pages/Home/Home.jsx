@@ -1,17 +1,13 @@
 import { Suspense } from "react";
-import { Await, defer, useLoaderData } from "react-router-dom";
+import { Await, defer, useAsyncError, useLoaderData, useLocation } from "react-router-dom";
 import { ArrowDownIcon } from "@/assets/icons";
-import { Card } from "@/components";
+import { CardList } from "@/components";
 import { Navbar } from "@/layouts";
-import { fetchData } from "@/utils";
+import { getAllCountries } from "@/utils";
 import style from "./Home.module.scss";
 
-//https://restcountries.com/
-
-export const homeLoader = () => {
-  const url = `https://restcountries.com/v3.1/all?fields=flags,name,population,region,capital,cca3`;
-
-  const countries = fetchData(url);
+export const homeLoader = async () => {
+  const countries = getAllCountries();
 
   return defer({ countries });
 };
@@ -22,13 +18,12 @@ export const Home = () => {
   return (
     <>
       <Navbar />
-      <section className={style.section}>
-        <Suspense fallback={<h2>Loading countries...</h2>}>
-          <Await resolve={countries}>
-            <Card />
-          </Await>
-        </Suspense>
-      </section>
+      <Suspense fallback={<h2>Loading countries...</h2>}>
+        <Await resolve={countries} errorElement={<CountriesError />}>
+          <CardList />
+        </Await>
+      </Suspense>
+
       <button
         className={style.button}
         type="button"
@@ -39,6 +34,16 @@ export const Home = () => {
           <ArrowDownIcon />
         </span>
       </button>
+    </>
+  );
+};
+
+const CountriesError = () => {
+  const error = useAsyncError();
+  return (
+    <>
+      <p>{error.statusText}</p>
+      <p>{error.status}</p>
     </>
   );
 };

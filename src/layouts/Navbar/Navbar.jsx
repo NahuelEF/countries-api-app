@@ -2,6 +2,7 @@ import { Filter, Search } from "@/components";
 import style from "./Navbar.module.scss";
 
 const options = [
+  { value: "", label: "All" },
   { value: "africa", label: "Africa" },
   { value: "americas", label: "America" },
   { value: "asia", label: "Asia" },

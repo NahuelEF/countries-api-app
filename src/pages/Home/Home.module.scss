@@ -1,12 +1,5 @@
 @use "@/styles/abstracts/mixins" as *;
 
-.section {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16.5625rem), 1fr));
-  gap: 4.5rem;
-}
-
 .button {
   $size: 1.5;
   $position: 2rem;

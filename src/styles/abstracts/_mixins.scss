@@ -1,3 +1,8 @@
+@use "sass:string";
+@use "sass:meta";
+@use "sass:map";
+@use "./breakpoints" as *;
+
 @mixin getItemsObject($object, $property) {
   @each $prefix, $component in $object {
     @each $number, $value in $component {
@@ -18,4 +23,43 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min($minWidth, 100%), 1fr));
   gap: $gap;
+}
+
+@mixin prefix($property, $value, $prefixes) {
+  $known-prefixes: webkit, moz, ms, o;
+
+  @each $prefix in $prefixes {
+    @if not index($known-prefixes, $prefix) {
+      @error "Unknown prefix #{$prefix}.";
+    }
+
+    -#{$prefix}-#{$property}: $value;
+  }
+  #{$property}: $value;
+}
+
+@mixin mediaQuery($breakpoint) {
+  $raw-query: map-get($breakpoints, $breakpoint);
+
+  @if $raw-query {
+    @media screen and (width <= $raw-query) {
+      @content;
+    }
+  } @else {
+    @error "No value found for `#{$breakpoint}`. Please make sure that it is defined in the map `$breakpoints`.";
+  }
+}
+
+@mixin animation($identifier) {
+  @-moz-keyframes #{$identifier} {
+    @content;
+  }
+
+  @-webkit-keyframes #{$identifier} {
+    @content;
+  }
+
+  @keyframes #{$identifier} {
+    @content;
+  }
 }

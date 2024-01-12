@@ -2,5 +2,5 @@
 
 .nav {
   width: 100%;
-  @include displayFlex(row, wrap, center, space-between, 5rem);
+  @include displayFlex(row, wrap, center, space-between, 3.1875rem 2rem);
 }

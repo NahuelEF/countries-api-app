@@ -4,7 +4,7 @@
 .buttonCountry {
   border-radius: var(--radius);
   background-color: var(--color-secondary-000);
-  box-shadow: var(--shadow);
+  @include prefix(box-shadow, var(--shadow), ("webkit", "moz"));
   text-align: center;
   cursor: pointer;
 }
@@ -16,6 +16,12 @@
 
   & span > svg {
     fill: none;
+  }
+
+  &:is(:hover, :focus) > span {
+    $animation: slide-left 0.75s ease-in-out 2 both;
+
+    @include prefix(animation, #{$animation}, ("webkit"));
   }
 }
 
@@ -30,15 +36,20 @@
   @include displayFlex(row, nowrap, center, space-between, 4.375rem 9.375rem);
 
   &Flag {
-    width: 50%;
     aspect-ratio: 3/2;
-    object-fit: fill;
+    @include prefix(object-fit, fill, ("o"));
+    flex: 1;
+  }
+
+  @include mediaQuery("medium") {
+    flex-direction: column;
+    align-items: initial;
   }
 }
 
 .details {
-  width: 50%;
   @include displayFlex(column, nowrap, initial, initial, 2.0625rem);
+  flex: 1;
 
   &Title {
     font: {
@@ -65,5 +76,15 @@
 
   &Borders {
     @include displayFlex(row, wrap, center, initial, 0.625rem);
+  }
+}
+
+@include animation(slide-left) {
+  0%,
+  100% {
+    @include prefix(transform, translateX(0), ("webkit", "moz", "o"));
+  }
+  50% {
+    @include prefix(transform, translateX(-40%), ("webkit", "moz", "o"));
   }
 }

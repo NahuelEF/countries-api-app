@@ -39,8 +39,8 @@ const Card = ({ countries, search }) => {
   const { flags, name, population, region, capital, cca3 } = countries;
 
   return (
-    <Link key={cca3} to={`country/${cca3}`} state={{ search: `?${search.toString()}` }}>
-      <article className={style.card}>
+    <Link key={cca3} className={style.card} to={`country/${cca3}`} state={{ search: `?${search.toString()}` }}>
+      <article>
         <img
           className={style.cardImage}
           src={flags.png}

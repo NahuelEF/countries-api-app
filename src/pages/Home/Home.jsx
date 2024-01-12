@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { Await, defer, useAsyncError, useLoaderData, useLocation } from "react-router-dom";
+import { Await, defer, useAsyncError, useLoaderData } from "react-router-dom";
 import { ArrowDownIcon } from "@/assets/icons";
 import { CardList } from "@/components";
 import { Navbar } from "@/layouts";
@@ -12,14 +12,26 @@ export const homeLoader = async () => {
   return defer({ countries });
 };
 
+const HomeError = () => {
+  const error = useAsyncError();
+  return (
+    <>
+      <p>{error.statusText}</p>
+      <p>{error.status}</p>
+    </>
+  );
+};
+
+const Loading = () => <h2>Loading countries...</h2>;
+
 export const Home = () => {
   const { countries } = useLoaderData();
 
   return (
     <>
       <Navbar />
-      <Suspense fallback={<h2>Loading countries...</h2>}>
-        <Await resolve={countries} errorElement={<CountriesError />}>
+      <Suspense fallback={<Loading />}>
+        <Await resolve={countries} errorElement={<HomeError />}>
           <CardList />
         </Await>
       </Suspense>
@@ -34,16 +46,6 @@ export const Home = () => {
           <ArrowDownIcon />
         </span>
       </button>
-    </>
-  );
-};
-
-const CountriesError = () => {
-  const error = useAsyncError();
-  return (
-    <>
-      <p>{error.statusText}</p>
-      <p>{error.status}</p>
     </>
   );
 };

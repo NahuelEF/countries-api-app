@@ -1,7 +1,9 @@
 @use "@/styles/abstracts/mixins";
 
 .main {
-  padding: 2rem 5rem; // delete this line
+  max-width: calc((158.75rem + 90rem) / 2);
+  margin-inline: auto;
+  padding: 2rem var(--padding-container);
   background-color: var(--color-primary-100);
   @include mixins.displayFlex(column, nowrap, center, initial, 2rem);
   scrollbar-gutter: stable;

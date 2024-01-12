@@ -1,5 +1,4 @@
 @use "@/styles/abstracts/mixins" as *;
-@use "@/styles/abstracts/colors" as *;
 
 .filter {
   $padding: 1.125rem;
@@ -10,8 +9,7 @@
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-300);
   @include displayFlex(column, nowrap, center, center);
-  -webkit-user-select: none;
-  user-select: none;
+  @include prefix(user-select, none, ("webkit"));
   cursor: pointer;
 
   &Label,
@@ -23,7 +21,7 @@
 
   &Label {
     padding: $padding;
-    box-shadow: var(--shadow);
+    @include prefix(box-shadow, var(--shadow), ("webkit", "moz"));
     @include displayFlex(row, nowrap, center, space-between, 2.75rem);
   }
 
@@ -31,7 +29,8 @@
     position: absolute;
     top: 4rem;
     left: 0;
-    box-shadow: var(--shadow);
+    z-index: 1;
+    @include prefix(box-shadow, var(--shadow), ("webkit", "moz"));
     overflow: hidden;
   }
 
@@ -42,7 +41,7 @@
     cursor: pointer;
 
     &:hover {
-      background-color: rgba(blue, 0.2);
+      background-color: var(--color-primary-200);
     }
   }
 }

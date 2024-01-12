@@ -8,12 +8,13 @@
 .card {
   border-radius: var(--radius);
   background-color: var(--color-secondary-000);
-  box-shadow: var(--shadow);
+  @include prefix(box-shadow, var(--shadow), ("webkit", "moz"));
   overflow: hidden;
+  @include prefix(transition, scale 0.2s ease-in-out, ("webkit", "o"));
 
   &Image {
     aspect-ratio: 2/1;
-    object-fit: cover;
+    @include prefix(object-fit, cover, ("o"));
   }
 
   &Container {
@@ -38,5 +39,9 @@
 
   &Strong {
     font-weight: var(--font-weight-600);
+  }
+
+  &:is(:hover, :focus) {
+    scale: 1.02;
   }
 }

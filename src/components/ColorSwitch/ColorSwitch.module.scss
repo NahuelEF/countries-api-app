@@ -6,6 +6,6 @@
     size: var(--font-size-md);
     weight: var(--font-weight-600);
   }
-  @include displayFlex(row, nowrap, center, space-between, 1rem);
+  @include displayFlex(row, nowrap, center, space-between, 11px);
   cursor: pointer;
 }

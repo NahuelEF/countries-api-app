@@ -7,7 +7,7 @@
   border-radius: var(--radius);
   background-color: var(--color-secondary-000);
   color: $secondary-color;
-  box-shadow: var(--shadow);
+  @include prefix(box-shadow, var(--shadow), ("webkit", "moz"));
   @include displayFlex(row, nowrap, center, center);
 
   &Label {

@@ -11,7 +11,7 @@
   padding: #{$size}rem;
   background-color: var(--color-primary-000);
   color: var(--color-primary-100);
-  box-shadow: var(--shadow);
+  @include prefix(box-shadow, var(--shadow), ("webkit", "moz"));
   cursor: pointer;
 
   span > svg {
